@@ -1,0 +1,32 @@
+{
+  "name": "BoviRation Lait Mobile",
+  "short_name": "BoviRation Lait",
+  "description": "Distribution des rations bovines laitières - BoviRation Lait Mobile",
+  "start_url": "/BoviRation/index.html",
+  "scope": "/BoviRation/",
+  "display": "standalone",
+  "background_color": "#1a3a5c",
+  "theme_color": "#1a3a5c",
+  "orientation": "portrait",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "icons/icon_192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon_512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/BoviRation_full.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

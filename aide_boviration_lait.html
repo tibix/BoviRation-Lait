@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BoviRation Lait — Mode d'emploi</title>
+<style>
+  :root{
+    --c1:#2060a0;--c1d:#1a4a80;--c1p:#e8f2fa;
+    --txt:#1f2937;--muted:#6b7280;--bg:#f5f7fa;
+    --card:#fff;--bord:#e5e7eb;--r:12px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--txt);height:100dvh;display:flex;flex-direction:column;overflow:hidden}
+
+  header{background:#1a3a5c;color:#fff;padding:.75rem 1rem;display:flex;align-items:center;gap:.75rem;flex-shrink:0}
+  header .logo{font-size:1.6rem}
+  header h1{font-size:1rem;font-weight:800}
+  header p{font-size:.72rem;color:rgba(255,255,255,.65);margin-top:.1rem}
+
+  nav{background:#fff;border-bottom:2px solid var(--bord);display:flex;overflow-x:auto;flex-shrink:0;scrollbar-width:none}
+  nav::-webkit-scrollbar{display:none}
+  nav button{flex-shrink:0;padding:.65rem .9rem;font-size:.78rem;font-weight:600;color:var(--muted);background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap;transition:all .15s;margin-bottom:-2px}
+  nav button.active{color:var(--c1d);border-bottom-color:var(--c1)}
+  nav button:hover:not(.active){color:var(--txt);background:#f9fafb}
+
+  .pages{flex:1;overflow:hidden;position:relative}
+  .page{display:none;height:100%;overflow-y:auto;padding:1rem;padding-bottom:3rem}
+  .page.active{display:block}
+
+  .page-title{display:flex;align-items:center;gap:.6rem;font-size:1.05rem;font-weight:800;color:#1a3a5c;border-left:4px solid var(--c1);padding-left:.75rem;margin-bottom:1rem}
+
+  .step{display:flex;gap:.7rem;margin-bottom:.7rem;background:var(--card);border-radius:var(--r);padding:.75rem .9rem;border:1px solid var(--bord);box-shadow:0 1px 3px rgba(0,0,0,.04)}
+  .step-num{background:var(--c1);color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;flex-shrink:0;margin-top:.1rem}
+  .step-num.e{background:var(--c1p);color:var(--c1);font-size:1rem;width:28px;height:28px}
+  .step h4{font-size:.88rem;font-weight:700;margin-bottom:.15rem}
+  .step p,.step ul,.step li{font-size:.82rem;color:var(--muted);line-height:1.55}
+  .step ul{margin-left:1rem;margin-top:.2rem}
+  .step li{margin-bottom:.1rem}
+
+  .info{background:var(--c1p);border:1px solid rgba(32,96,160,.25);border-radius:var(--r);padding:.75rem 1rem;font-size:.83rem;color:#1a3a5c;margin-bottom:.9rem}
+  .warn{background:#fffbeb;border:1px solid #fde68a;border-radius:var(--r);padding:.75rem 1rem;font-size:.83rem;color:#78350f;margin-bottom:.9rem}
+  .tip{background:#eff6ff;border:1px solid #bfdbfe;border-radius:var(--r);padding:.75rem 1rem;font-size:.83rem;color:#1e3a5f;margin-bottom:.9rem}
+
+  .races-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.4rem;margin:.5rem 0}
+  .race-badge{background:var(--c1p);border:1px solid rgba(32,96,160,.2);border-radius:8px;padding:.4rem .7rem;font-size:.8rem;font-weight:600;color:var(--c1d)}
+
+  .stades-grid{display:flex;flex-wrap:wrap;gap:.35rem;margin:.4rem 0}
+  .stade{font-size:.74rem;background:#f3f4f6;border-radius:6px;padding:.2rem .55rem;color:var(--muted);border:1px solid var(--bord)}
+
+  footer{text-align:center;padding:.6rem;font-size:.72rem;color:var(--muted);background:#fff;border-top:1px solid var(--bord);flex-shrink:0}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">🐄</div>
+  <div>
+    <h1>BoviRation Lait — Mode d'emploi</h1>
+    <p>Guide complet · v3.6 · Agrilium</p>
+  </div>
+</header>
+
+<nav id="nav">
+  <button class="active" onclick="goPage('demarrer')">🚀 Démarrer</button>
+  <button onclick="goPage('parametres')">⚙️ Paramètres</button>
+  <button onclick="goPage('ration')">🌿 Ration</button>
+  <button onclick="goPage('suivi')">📊 Suivi</button>
+  <button onclick="goPage('mobile')">📱 Mobile</button>
+  <button onclick="goPage('sante')">🏥 Santé</button>
+  <button onclick="goPage('reglages')">🔧 Réglages</button>
+</nav>
+
+<div class="pages">
+
+<!-- ══════════════ DÉMARRER ══════════════ -->
+<div class="page active" id="page-demarrer">
+  <div class="page-title">🚀 Démarrer avec BoviRation Lait</div>
+
+  <div class="info"><strong>BoviRation Lait</strong> est un logiciel de calcul et d'équilibrage des rations bovines laitières basé sur les normes <strong>INRA 2007</strong>. Il se compose d'une version PC pour le calcul des rations et d'une version mobile pour la distribution en bergerie.</div>
+
+  <div class="step"><div class="step-num">1</div><div><h4>Créer un compte</h4><p>Au premier lancement, cliquez sur <em>Créer un compte</em>. Renseignez votre email et un mot de passe. Le compte est partagé entre la version PC et mobile — une seule inscription suffit.</p></div></div>
+
+  <div class="step"><div class="step-num">2</div><div><h4>Choisir votre abonnement</h4><p>Après inscription, un écran vous propose de choisir votre formule :<br>
+    <strong>Mensuel</strong> — 24,99 € / mois, sans engagement<br>
+    <strong>Annuel</strong> — 249,90 € / an (2 mois offerts, soit 20,83 €/mois)<br>
+    Un essai gratuit de <strong>1 jour</strong> est inclus — votre carte n'est pas débitée immédiatement.</p></div></div>
+
+  <div class="step"><div class="step-num">3</div><div><h4>Créer votre premier lot</h4><p>Cliquez sur <strong>+ Lot</strong> en haut de la page Paramètres. Donnez-lui un nom (ex: "Lot lactation", "Taries"), puis renseignez les paramètres de l'animal et de la production.</p></div></div>
+
+  <div class="step"><div class="step-num">4</div><div><h4>Calculer les besoins</h4><p>Les besoins nutritionnels (UFL, PDIN, PDIE, MAT, UEL) se calculent automatiquement à chaque modification des paramètres. Le panneau droit affiche les <strong>5 indicateurs clés</strong> en temps réel.</p></div></div>
+
+  <div class="step"><div class="step-num">5</div><div><h4>Composer la ration</h4><p>Cliquez sur <strong>Composer la ration →</strong> pour accéder à l'onglet Ration. Ajoutez vos aliments depuis la base et ajustez les quantités jusqu'à atteindre l'équilibre.</p></div></div>
+
+  <div class="step"><div class="step-num">6</div><div><h4>Envoyer vers le mobile</h4><p>Une fois la ration validée, cliquez sur <strong>Envoyer les rations</strong> dans le menu. L'application mobile peut alors afficher les rations pour la distribution en bâtiment.</p></div></div>
+
+  <div class="tip">💡 <strong>Version PC :</strong> <a href="https://tibix.github.io/BoviRation/boviration_lait_pc.html" style="color:var(--c1)">tibix.github.io/BoviRation/boviration_lait_pc.html</a></div>
+</div>
+
+<!-- ══════════════ PARAMÈTRES ══════════════ -->
+<div class="page" id="page-parametres">
+  <div class="page-title">⚙️ Paramètres par lot</div>
+
+  <div class="info"><strong>Objectif</strong> — Définir les caractéristiques zootechniques de chaque lot pour calculer les besoins nutritionnels précis selon INRA 2007.</div>
+
+  <div class="step"><div class="step-num e">🐄</div><div><h4>Type d'animal</h4><p>Trois types disponibles :</p>
+    <ul>
+      <li><strong>Vache laitière</strong> — calcul complet UFL/PDIN/PDIE/UEL avec production laitière</li>
+      <li><strong>Génisse</strong> — besoins croissance + gestation première lactation</li>
+      <li><strong>Taureau</strong> — besoins entretien + période de lutte</li>
+    </ul>
+  </div></div>
+
+  <div class="step"><div class="step-num e">🏷️</div><div><h4>Race</h4><p>Sélectionnez la race — elle ajuste automatiquement le coefficient de production (kLait), le poids de référence, le TB et TP de référence :</p>
+    <div class="races-grid">
+      <div class="race-badge">🥛 Prim'Holstein</div>
+      <div class="race-badge">🐄 Normande</div>
+      <div class="race-badge">🟤 Montbéliarde</div>
+      <div class="race-badge">🟡 Jersiaise</div>
+      <div class="race-badge">⛰️ Abondance</div>
+      <div class="race-badge">🔴 Simmental</div>
+    </div>
+  </div></div>
+
+  <div class="step"><div class="step-num e">📏</div><div><h4>Paramètres zootechniques</h4>
+    <ul>
+      <li><strong>Poids vif (kg)</strong> — base du calcul entretien (P^0.75)</li>
+      <li><strong>NEC</strong> — Note d'État Corporel 1→5, ajuste les besoins énergétiques</li>
+      <li><strong>Parité</strong> — Multipare ou Primipare (+10-15% besoins)</li>
+      <li><strong>Stade physiologique</strong> — voir liste ci-dessous</li>
+      <li><strong>Production visée (L/j)</strong> — principal driver des besoins</li>
+      <li><strong>TB (g/kg)</strong> — Taux Butyreux, impacte UFL/L</li>
+      <li><strong>TP (g/kg)</strong> — Taux Protéique, impacte PDIN/PDIE/L</li>
+      <li><strong>Nombre de VL</strong> — pour la distribution globale du troupeau</li>
+      <li><strong>Température bâtiment (°C)</strong> — correction ITH sur les besoins</li>
+    </ul>
+  </div></div>
+
+  <div class="step"><div class="step-num e">📅</div><div><h4>Stades physiologiques</h4>
+    <div class="stades-grid">
+      <span class="stade">Début lactation (0-2 mois)</span>
+      <span class="stade">Pleine lactation (2-8 mois)</span>
+      <span class="stade">Fin lactation (8 mois+)</span>
+      <span class="stade">Gestation début (1-3 mois)</span>
+      <span class="stade">Gestation fin (7-9 mois)</span>
+      <span class="stade">Tarissement</span>
+      <span class="stade">Entretien</span>
+    </div>
+    <p style="font-size:.8rem;color:var(--muted);margin-top:.5rem">⚠️ Chez la vache, gestation et lactation se chevauchent. Choisissez le stade dominant pour le calcul.</p>
+  </div></div>
+
+  <div class="step"><div class="step-num">+</div><div><h4>Gérer les lots</h4><p>Bouton <strong>+ Lot</strong> pour créer un nouveau lot. Le crayon ✏️ pour renommer, la corbeille 🗑️ pour supprimer. Chaque lot a ses propres paramètres et sa propre ration.</p></div></div>
+</div>
+
+<!-- ══════════════ RATION ══════════════ -->
+<div class="page" id="page-ration">
+  <div class="page-title">🌿 Composition de la ration</div>
+
+  <div class="info"><strong>Objectif</strong> — Composer une ration équilibrée en ajustant les apports d'aliments pour couvrir les besoins calculés (UFL, PDIN, PDIE, UEL, MAT).</div>
+
+  <div class="step"><div class="step-num">1</div><div><h4>Ajouter un aliment</h4><p>Cliquez sur <strong>+ Ajouter un aliment</strong>. Sélectionnez dans la base d'aliments (fourrages, concentrés, aliments composés) ou créez un aliment personnalisé avec vos propres valeurs nutritives.</p></div></div>
+
+  <div class="step"><div class="step-num">2</div><div><h4>Ajuster les quantités</h4><p>Modifiez la quantité (kg MS/j) de chaque aliment. Les jauges se mettent à jour en temps réel — vert = couvert, orange = léger déficit, rouge = déficit important.</p></div></div>
+
+  <div class="step"><div class="step-num">3</div><div><h4>Lire les jauges</h4><ul>
+    <li><strong>UFL</strong> — énergie nette lactation</li>
+    <li><strong>PDIN</strong> — protéines digestibles intestinales (azote)</li>
+    <li><strong>PDIE</strong> — protéines digestibles intestinales (énergie)</li>
+    <li><strong>MAT</strong> — matières azotées totales (%MS)</li>
+    <li><strong>UEL</strong> — unités d'encombrement (ne pas dépasser CI max)</li>
+  </ul></div></div>
+
+  <div class="step"><div class="step-num">4</div><div><h4>Indicateurs GLUF4 / MPRC / MPIC</h4><p>Ces indicateurs complémentaires permettent de contrôler l'équilibre énergético-protéique de la ration :</p>
+    <ul>
+      <li><strong>GLUF4</strong> — g amidon / UFL, cible 2.5-3.5 (risque acidose si > 4)</li>
+      <li><strong>MPRC</strong> — g PDIN / UFL, cible 80-100</li>
+      <li><strong>MPIC</strong> — g PDIE / UFL, cible 80-100</li>
+    </ul>
+  </div></div>
+
+  <div class="step"><div class="step-num">5</div><div><h4>Production permise</h4><p>La production permise est calculée à partir des apports UFL et PDIN/PDIE. Si elle est inférieure à la production visée, la ration est insuffisante en énergie ou en protéines.</p></div></div>
+
+  <div class="step"><div class="step-num">6</div><div><h4>Imprimer la ration</h4><p>Bouton <strong>🖨️ Imprimer</strong> — génère une fiche A4 avec les aliments, quantités, apports nutritifs et comparaison besoins/apports. Format paysage optimisé pour l'affichage en bâtiment.</p></div></div>
+
+  <div class="tip">💡 En TMR (Ration Mélangée Totale), tous les aliments sont mélangés. En ration séparée, les fourrages et concentrés sont distribués séparément — ajustez le type dans les paramètres.</div>
+</div>
+
+<!-- ══════════════ SUIVI ══════════════ -->
+<div class="page" id="page-suivi">
+  <div class="page-title">📊 Suivi production & refus</div>
+
+  <div class="info"><strong>Objectif</strong> — Suivre la production laitière réelle et les refus de ration pour ajuster l'alimentation en continu.</div>
+
+  <div class="step"><div class="step-num">1</div><div><h4>Saisir la production</h4><p>Dans l'onglet <strong>Suivi production</strong>, saisissez la production matin et soir pour chaque lot. Ou utilisez <em>Enregistrement global</em> pour répartir automatiquement une production totale du troupeau sur les lots sélectionnés.</p></div></div>
+
+  <div class="step"><div class="step-num">2</div><div><h4>Sélectionner les lots laitiers</h4><p>Cochez les lots à inclure dans la répartition globale. Les lots non cochés ne reçoivent pas de production globale.</p></div></div>
+
+  <div class="step"><div class="step-num">3</div><div><h4>Filtrer la période</h4><p>Boutons <strong>7j / 30j / Tout</strong> — filtrez l'historique de production affiché dans les graphiques et tableaux.</p></div></div>
+
+  <div class="step"><div class="step-num">4</div><div><h4>Suivi des refus</h4><p>Dans l'onglet <strong>Refus</strong>, saisissez les refus de ration (kg brut) pour chaque lot. Le taux de refus (%) est calculé automatiquement. L'historique 60 jours est affiché en sparkline.</p></div></div>
+
+  <div class="step"><div class="step-num">5</div><div><h4>Bilan production</h4><p>L'onglet <strong>Bilan production</strong> affiche le tableau annuel de production par lot avec cumuls sur la campagne. Sélectionnez le mois de début de campagne. Export CSV disponible.</p></div></div>
+
+  <div class="step"><div class="step-num">6</div><div><h4>Importer production depuis le mobile</h4><p>La production saisie sur l'application mobile est synchronisée automatiquement dans Firestore et disponible sur le PC via le bouton <em>Importer production</em>.</p></div></div>
+</div>
+
+<!-- ══════════════ MOBILE ══════════════ -->
+<div class="page" id="page-mobile">
+  <div class="page-title">📱 Application mobile</div>
+
+  <div class="info"><strong>BoviRation Lait Mobile</strong> est l'application de distribution — elle affiche les rations configurées sur le PC et permet de saisir la production et les refus directement en bâtiment.</div>
+
+  <div class="step"><div class="step-num">1</div><div><h4>Connexion</h4><p>Connectez-vous avec les mêmes identifiants que le PC. L'application vérifie votre abonnement et charge automatiquement les rations depuis le cloud.</p></div></div>
+
+  <div class="step"><div class="step-num">2</div><div><h4>Affichage des rations</h4><p>Chaque lot s'affiche avec sa ration complète : aliments, quantités en kg brut, ordre de distribution. Basculez entre les lots par les onglets en bas de l'écran.</p></div></div>
+
+  <div class="step"><div class="step-num">3</div><div><h4>Cocher les distributions</h4><p>Cochez chaque aliment au fur et à mesure de la distribution. Un chronomètre de bol est disponible pour mesurer le temps de consommation.</p></div></div>
+
+  <div class="step"><div class="step-num">4</div><div><h4>Saisir la production</h4><p>Onglet <strong>Production</strong> — saisissez les litres matin et soir par lot. Les données sont synchronisées vers Firestore et consultables sur le PC.</p></div></div>
+
+  <div class="step"><div class="step-num">5</div><div><h4>Saisir les refus</h4><p>Onglet <strong>Refus</strong> — saisissez les refus en kg brut. Le taux est calculé automatiquement et affiché dans le suivi PC.</p></div></div>
+
+  <div class="step"><div class="step-num">6</div><div><h4>Installer sur l'écran d'accueil</h4><p>Sur Android (Chrome) : une bannière propose l'installation automatique. Sur iOS (Safari) : appuyez sur ⎋ Partager → <em>Sur l'écran d'accueil</em>. L'app fonctionne alors comme une application native.</p></div></div>
+
+  <div class="tip">💡 <strong>Accès mobile :</strong> <a href="https://tibix.github.io/BoviRation/" style="color:var(--c1)">tibix.github.io/BoviRation/</a></div>
+</div>
+
+<!-- ══════════════ SANTÉ ══════════════ -->
+<div class="page" id="page-sante">
+  <div class="page-title">🏥 Santé du troupeau</div>
+
+  <div class="info">BoviRation Lait intègre deux pathologies majeures qui affectent les besoins nutritionnels et l'efficacité alimentaire des bovins laitiers.</div>
+
+  <div class="step"><div class="step-num e">🦠</div><div><h4>Paratuberculose (Maladie de Johne)</h4><p>La paratuberculose est une entérite chronique causée par <em>Mycobacterium avium paratuberculosis</em>. Elle provoque une malabsorption intestinale progressive.</p>
+    <ul>
+      <li><strong>Aucune</strong> — pas d'impact sur le calcul</li>
+      <li><strong>Infection modérée</strong> — réduction absorption énergie et protéines, majoration besoins entretien</li>
+      <li><strong>Infection sévère</strong> — réduction importante, animal en déficit chronique</li>
+    </ul>
+    <p style="margin-top:.4rem;font-size:.8rem;color:var(--muted)">Le logiciel applique des coefficients de correction kAbsE, kAbsP et kMajP selon le niveau d'infection.</p>
+  </div></div>
+
+  <div class="step"><div class="step-num e">🔬</div><div><h4>BVD (Diarrhée Virale Bovine)</h4><p>Le BVD est une maladie virale immunodépressive qui réduit l'efficacité protéique et la production laitière.</p>
+    <ul>
+      <li><strong>Aucune</strong> — pas d'impact</li>
+      <li><strong>Séropositif asymptomatique</strong> — légère réduction efficacité protéique</li>
+      <li><strong>Symptomatique</strong> — réduction modérée production et immunité</li>
+      <li><strong>IPI</strong> (Infecté Permanent Immunotolérant) — animal excréteur chronique, réduction importante. À éliminer du troupeau.</li>
+    </ul>
+  </div></div>
+
+  <div class="warn">⚠️ Un animal <strong>IPI</strong> excrète massivement le virus BVD en permanence et contamine tout le troupeau. Son identification et son élimination sont prioritaires dans tout plan d'assainissement BVD.</div>
+
+  <div class="step"><div class="step-num e">🌡️</div><div><h4>Confort thermique (ITH)</h4><p>La température du bâtiment module les besoins énergétiques. Les bovins laitiers hauts producteurs sont très sensibles au stress thermique :</p>
+    <ul>
+      <li><strong>&lt; 12°C</strong> — augmentation des besoins (froid)</li>
+      <li><strong>12-18°C</strong> — zone de confort thermique</li>
+      <li><strong>&gt; 22°C</strong> — réduction ingestion et production (chaleur)</li>
+      <li><strong>&gt; 26°C</strong> — stress thermique sévère</li>
+    </ul>
+  </div></div>
+</div>
+
+<!-- ══════════════ RÉGLAGES ══════════════ -->
+<div class="page" id="page-reglages">
+  <div class="page-title">🔧 Réglages & synchronisation</div>
+
+  <div class="step"><div class="step-num">1</div><div><h4>Mon compte</h4><p>Votre email est affiché en bas à gauche de la barre de navigation. Cliquez sur <em>Déconnecter</em> pour vous déconnecter. Pour changer de mot de passe, utilisez <em>Mot de passe oublié</em> sur l'écran de connexion.</p></div></div>
+
+  <div class="step"><div class="step-num">2</div><div><h4>Base d'aliments personnalisée</h4><p>Dans <strong>Base aliments</strong>, créez vos propres aliments avec vos valeurs analytiques (UFL, PDIN, PDIE, UEL, MS, MAT, amidon, Ca, P, prix). Ces aliments apparaissent dans la liste lors de la composition de ration.</p></div></div>
+
+  <div class="step"><div class="step-num">3</div><div><h4>Synchronisation avec BoviScan Lait</h4><p>Dans <strong>Importer les lots</strong>, connectez-vous à BoviScan Lait pour importer automatiquement vos lots et effectifs. Les données de BoviScan Lait sont lues en lecture seule.</p></div></div>
+
+  <div class="step"><div class="step-num">4</div><div><h4>Envoyer les rations vers le mobile</h4><p><strong>Envoyer les rations</strong> — pousse toutes les rations configurées vers Firestore. L'application mobile les charge automatiquement au prochain démarrage ou synchronisation.</p></div></div>
+
+  <div class="step"><div class="step-num">5</div><div><h4>Importer la production depuis le mobile</h4><p><strong>Importer production</strong> — récupère les données de production saisies sur le mobile depuis Firestore vers le PC.</p></div></div>
+
+  <div class="step"><div class="step-num">6</div><div><h4>Abonnement</h4><p>Pour gérer votre abonnement (modifier, résilier), connectez-vous à votre espace client Stripe via le lien envoyé par email après souscription. Aucune démarche n'est nécessaire pour le renouvellement — il est automatique.</p></div></div>
+
+  <div class="tip">💡 En cas de problème de synchronisation, rechargez la page (F5). Les données sont stockées en cloud (Firebase) et en local — aucune perte de données en cas de déconnexion temporaire.</div>
+</div>
+
+</div><!-- /pages -->
+
+<footer>BoviRation Lait · © 2026 Agrilium — Thibaut Lafon · <a href="https://www.myagrilium.com" style="color:var(--c1)">myagrilium.com</a></footer>
+
+<script>
+function goPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  event.target.classList.add('active');
+  document.getElementById('page-'+id).scrollTop = 0;
+}
+</script>
+</body>
+</html>
