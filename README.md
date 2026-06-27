@@ -13,8 +13,8 @@ BoviRation Lait est un outil professionnel de rationnement bovin laitier basé s
 
 | Version | Lien |
 |---|---|
-| 📱 Mobile (Distribution) | [tibix.github.io/BoviRation-Lait/](https://tibix.github.io/BoviRation/) |
-| 🖥️ PC (Calcul des rations) | [tibix.github.io/BoviRation-Lait/boviration_lait_pc.html](https://tibix.github.io/BoviRation/boviration_lait_pc.html) |
+| 📱 Mobile (Distribution) | [tibix.github.io/BoviRation-Lait/](https://tibix.github.io/BoviRation-Lait/) |
+| 🖥️ PC (Calcul des rations) | [tibix.github.io/BoviRation-Lait/boviration_lait_pc.html](https://tibix.github.io/BoviRation-Lait/boviration_lait_pc.html) |
 
 ---
 
